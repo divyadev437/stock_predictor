@@ -1,0 +1,13 @@
+Flask
+Flask-SQLAlchemy
+Flask-Login
+Flask-WTF
+Flask-Bcrypt
+pandas
+numpy
+scikit-learn
+xgboost
+yfinance
+gunicorn
+email_validator
+Flask-Mail>=0.9.1

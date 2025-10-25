@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center text-primary">Stock Price Prediction Dashboard</h2> <div class="row justify-content-center mb-4">
+        <div class="col-lg-10 col-xl-8">
+            <div class="card border-primary shadow-sm"> <div class="card-body p-4">
+                    <h5 class="card-title text-center mb-4 text-secondary">Input Parameters</h5>
+                    <form id="prediction-form" class="row g-3 align-items-end">
+                        <div class="col-md-4">
+                            <label for="stock-select" class="form-label">Select Stock</label>
+                            <select id="stock-select" class="form-select form-select-sm">
+                                {% for stock in stocks %}
+                                <option value="{{ stock }}">{{ stock }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="model-select" class="form-label">Select Model</label>
+                            <select id="model-select" class="form-select form-select-sm">
+                                {% for model in models %}
+                                <option value="{{ model }}">{{ model }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="prediction-date" class="form-label">Prediction Date</label>
+                            <input type="text" id="prediction-date" class="form-control form-control-sm" placeholder="Select future date...">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" id="predict-button" class="btn btn-primary w-100 btn-sm">
+                                <span class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true"></span>
+                                Predict Stock
+                            </button>
+                        </div>
+                    </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="alert-box" class="row justify-content-center d-none mb-4">
+        <div class="col-lg-10 col-xl-8">
+            <div class="alert alert-danger" role="alert"></div>
+        </div>
+    </div>
+
+    <div id="results-section" class="row justify-content-center d-none mb-4">
+        <div class="col-lg-10 col-xl-8">
+            <div class="card border-primary shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-center mb-4 text-secondary">Prediction for <span id="result-stock-name" class="fw-bold text-primary">-</span></h5>
+                    <div class="row text-center mb-4">
+                        <div class="col-md-4">
+                            <h6 class="text-muted">Predicted Date</h6>
+                            <p id="result-predicted-date" class="fs-5 mb-0">-</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="text-muted">Prediction Model</h6>
+                            <p id="result-model" class="fs-5 mb-0">-</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="text-muted">Model Confidence</h6>
+                            <p id="result-confidence" class="fs-5 mb-0">-</p>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h6 class="text-muted">Predicted Stock Price</h6> <p id="result-predicted-price" class="display-4 fw-bold text-primary mb-0">₹ -</p>
+                         <small class="d-block text-muted mt-3"></small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div id="chart-section" class="row justify-content-center d-none mb-4">
+         <div class="col-lg-10 col-xl-8">
+             <div class="card border-primary shadow-sm mb-4">
+                 <div class="card-body p-4">
+                      <h5 class="card-title text-center mb-3 text-secondary">Historical Price Trend (All Data)</h5>
+                      <div id="full-historical-chart" class="chart-container"></div>
+                 </div>
+             </div>
+             <div class="card border-primary shadow-sm mb-4">
+                 <div class="card-body p-4">
+                      <h5 class="card-title text-center mb-3 text-secondary">Last 30 Days Price Trend with Prediction</h5>
+                      <div id="last-30-days-chart" class="chart-container"></div>
+                 </div>
+             </div>
+             <div class="card border-primary shadow-sm">
+                 <div class="card-body p-4">
+                      <h5 class="card-title text-center mb-3 text-secondary">Predicted Price Trend (Next 15 Days)</h5>
+                      <div id="predicted-trend-chart" class="chart-container"></div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+</div>
+{% endblock %}

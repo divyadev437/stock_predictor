@@ -1,0 +1,121 @@
+/* Custom CSS for Stock Predictor - White/Blue Theme */
+
+/* General Body Styling */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa; /* Light background */
+    color: #333333; /* Darker text for contrast */
+    font-family: 'Roboto', sans-serif; /* Common clean font */
+}
+
+/* Main Content Area */
+main {
+    flex: 1; /* Allows content to grow */
+}
+
+/* Navbar Styling */
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--bs-primary) !important; /* Blue for active link */
+    font-weight: bold;
+}
+
+/* Card Styling */
+.card {
+    background-color: white;
+    border-color: var(--bs-primary) !important; /* Blue border */
+    border-width: 1px;
+}
+.card-title, .card-text {
+    color: #333333; /* Dark text */
+}
+
+/* Labels and Small Text */
+.form-label, .text-muted {
+    color: #666666 !important; /* Slightly muted text */
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+.btn-primary:hover {
+    background-color: #0b5ed7; /* Slightly darker blue on hover */
+    border-color: #0a58ca;
+}
+.btn-danger { /* For Login/Register/Logout */
+    background-color: var(--bs-danger);
+    border-color: var(--bs-danger);
+}
+.btn-danger:hover {
+    background-color: #bb2d3b; /* Slightly darker red on hover */
+    border-color: #b02a37;
+}
+
+/* Text Colors */
+.text-primary {
+    color: var(--bs-primary) !important;
+}
+.text-secondary {
+    color: #5c636a !important; /* Standard secondary color */
+}
+
+/* Prediction Price Display */
+#result-predicted-price {
+    color: var(--bs-primary) !important; /* Blue for the main predicted price */
+}
+
+/* Chart Container */
+.chart-container {
+    width: 100%;
+    min-height: 300px; /* Reduced height for multiple charts */
+}
+
+/* Flatpickr Calendar Theming (light theme is selected in base.html) */
+.flatpickr-calendar {
+    background: white;
+    border: 1px solid #ced4da;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.flatpickr-day.selected, .flatpickr-day.selected:hover {
+    background: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+.flatpickr-day.today.selected {
+    background: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+.flatpickr-day.today:hover {
+    background: #e9ecef; /* Light gray for today hover */
+}
+.flatpickr-day:hover {
+    background: #f1f3f5; /* Very light gray for day hover */
+}
+
+/* Responsive Plotly Charts - ensure background is transparent for dark theme */
+.js-plotly-plot .plotly .plot-container {
+     background-color: transparent !important;
+}
+
+/* Debugger styles if Flask debug is on - sometimes they inherit unwanted colors */
+#flDebug .flDebug-toolbar {
+    background-color: rgba(255, 255, 255, 0.9) !important; /* Light background */
+    color: #333333 !important;
+}
+#flDebug .flDebug-toolbar a {
+    color: var(--bs-primary) !important;
+}
+
+/* Specific adjustments for Admin page if needed (text visibility) */
+.table {
+    color: #333333; /* Dark text for table content */
+}
+.table-hover tbody tr:hover {
+    background-color: #e9ecef; /* Light hover effect */
+}
